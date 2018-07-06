@@ -15,6 +15,7 @@ type Encoder func(KSUID) []byte
 type Decoder func([]byte) (*KSUID, error)
 
 // EncodeBinary encodes the KSUID as a sequence of bytes in big-endian order.
+// This function always returns a []byte with a length of exactly 12.
 // Useful for efficient transport over a network to other machines.
 // Also used by most other encoder functions.
 func EncodeBinary(k KSUID) []byte {
@@ -28,6 +29,7 @@ func EncodeBinary(k KSUID) []byte {
 }
 
 // EncodeHex encodes the KSUID to hex
+// This function returns a []byte with a length of exactly 24.
 func EncodeHex(k KSUID) []byte {
 	b := EncodeBinary(k)
 	
@@ -37,6 +39,7 @@ func EncodeHex(k KSUID) []byte {
 	return r
 }
 
+// DecodeBinary decodes a KSUID from 12 bytes of binary data.
 func DecodeBinary(b []byte) (*KSUID, error) {
 	if len(b) != 12 {
 		return nil, errors.New("encoded KSUID must be exactly 12 bytes")
