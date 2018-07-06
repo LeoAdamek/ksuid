@@ -42,3 +42,22 @@ The following partitioners are included:
 |:--:|:----------|
 |`ksuid.NilPartitioner`|Sets everything to partition `0`|
 |`ksuid.StringPartitioner(s string)`|Sets all partitions to `s` as a BigEndian `uint32`|
+|`ksuid.MacPartitioner()()`|Sets the partition based on the first network interface's hardware address|
+
+Bechmarks
+---------
+
+    BenchmarkEncodeBinary-8                   10000000               242    ns/op
+    BenchmarkDecodeBinary-8                   30000000                44.2  ns/op
+    BenchmarkDecodeHex-8                      10000000               132    ns/op
+    BenchmarkEncodeHex-8                       5000000               301    ns/op
+    BenchmarkStandardGenerator_Next-8         20000000                81.9  ns/op
+    BenchmarkAsyncGenerator_Next-8           200000000                 9.27 ns/op
+    BenchmarkStringPartitioner-8            2000000000                 1.69 ns/op
+    BenchmarkMacPartitioner-8               2000000000                 1.91 ns/op
+    
+
+Roadmap
+-------
+
+* Improve Encode/Decode speed for Binary and Hex
