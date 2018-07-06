@@ -1,5 +1,6 @@
-KSUID
+KSUID 
 =====
+[![CircleCI](https://circleci.com/gh/LeoAdamek/ksuid.svg?style=svg)](https://circleci.com/gh/LeoAdamek/ksuid)
 
 This is a variant of [segmentio/ksuid](https://github.com/segmentio/ksuid) but with customizable partitioning support
 pluggable encoding.
